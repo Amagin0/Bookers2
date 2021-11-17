@@ -1,9 +1,8 @@
-<body>  
   <div class="container">
     <div class="col-sm-12 col-md-8 col-lg-5 px-5 px-sm-0 mx-auto">
       <h2>User info</h2>
     
-    <p id="notice">
+    <p id="success">
       <%= notice %>
     </p>
     
@@ -11,7 +10,6 @@
       
       <%= form_with model:@user, local: true do |f| %>
         <div class="container">
-          <form>
             <div class="form-group">
               <%= f.label :Name %>
               <%= f.text_field :name, class: 'form-controll col-sm-12' %>
@@ -27,9 +25,7 @@
               <%= f.text_area :introduction, class: 'form-controll col-sm-12' %>
             </div>
             <%= f.submit class: "btn btn-secondary" %>
-          </form>
         </div>
       <% end %>
     </div>
   </div>
-</body>
