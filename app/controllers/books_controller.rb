@@ -1,13 +1,12 @@
 class BooksController < ApplicationController
   
   before_action :authenticate_user!
-  before_action :ensure_correct_user, only: [:edit, :update, :destroy]
-  
+
   def create
     @book = Book.new(book_params)
     @book.user_id = current_user.id
     if @book.save
-       redirect_to book_path(@book), notice: 'Book was successfully created.'
+      redirect_to book_path(@book), notice: 'Book was successfully created.'
     else
       @books = Book.all
       @user = User.find(current_user.id)
@@ -29,7 +28,7 @@ class BooksController < ApplicationController
 
   def edit
     @book = Book.find(params[:id])
-    if @book.user == current_user #URLを入力しても画面に飛ばせない
+    if @book.user == current_user 
       render "edit"
     else
       redirect_to books_path
@@ -57,12 +56,4 @@ class BooksController < ApplicationController
   def book_params
     params.require(:book).permit(:title, :body)
   end
-  
-  def ensure_correct_user
-    @book = Book.find(params[:id])
-    unless @book.user == current_user
-    redirect_to books_path
-    end
-  end
-  
 end

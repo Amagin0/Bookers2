@@ -3,7 +3,7 @@
     <div class="col-md-8 col-md-offset-4">
       
       <h2>Editing Book</h2>
-      <%= render 'layouts/error',error: @book %>
+      <%= render 'layouts/error',model: @book %>
 
       <%= form_with model:@book, local: true do |f| %>
         <div class="field row">
